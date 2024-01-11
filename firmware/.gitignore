@@ -1,0 +1,7 @@
+workshop_piano.X/*
+!workshop_piano.X/Makefile
+!workshop_piano.X/nbproject
+workshop_piano.X/nbproject/*
+!workshop_piano.X/nbproject/configurations.xml
+!workshop_piano.X/nbproject/project.xml
+!workshop_piano.X/nbproject/Makefile
