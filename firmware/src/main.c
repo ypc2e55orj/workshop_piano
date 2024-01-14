@@ -26,9 +26,14 @@ void main(void)
 
 void __interrupt() isr(void)
 {
+  static uint16_t pwmDuty = 0;
   if (PIR1bits.TMR2IF)
   {
-    LATCbits.LATC0 = ~LATCbits.LATC0;
+    Pwm_SetDuty(pwmDuty);
+    if (++pwmDuty > 1023)
+    {
+      pwmDuty = 0;
+    }
 
     PIR1bits.TMR2IF = 0;
   }
@@ -42,7 +47,6 @@ void setup()
   Pwm_Initialize();
   Wdt_Start();
   Pwm_Start();
-  Pwm_SetDuty(512);
 }
 
 void loop()
