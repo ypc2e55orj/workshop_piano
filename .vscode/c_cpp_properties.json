@@ -8,10 +8,8 @@
         "/opt/microchip/xc8/v2.45/pic/include/c99",
         "/opt/microchip/xc8/v2.45/pic/include/proc",
       ],
-      "defines": [
-        "__XC8",
-        "__PICC__",
-        "_16F1459"
+      "forcedInclude": [
+        "${workspaceFolder}/.vscode/vscode_xc.h"
       ],
       "compilerPath": "/opt/microchip/xc8/v2.45/bin/xc8-cc",
       "cStandard": "c17",
