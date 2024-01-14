@@ -1,0 +1,14 @@
+{
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "editor.useTabStops": false,
+  "editor.tabSize": 2,
+  "files.associations": {
+    "xc.h": "c",
+    "pic.h": "c",
+    "configurations.h": "c",
+    "pic_chip_select.h": "c",
+    "pic16f1459.h": "c",
+    "__at.h": "c"
+  }
+}
