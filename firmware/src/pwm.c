@@ -5,9 +5,6 @@
 // libc
 #include <stdint.h>
 
-// defines
-#define PWM2DC(val) ()
-
 void Pwm_Initialize()
 {
   // Disables all interrupts
