@@ -1,5 +1,7 @@
 #include "pwm.h"
 
+#pragma warning disable 520
+
 #include <xc.h>
 
 // libc
@@ -49,14 +51,26 @@ void Pwm_Initialize()
 
 void Pwm_Start()
 {
-  TRISCbits.TRISC5 = 0;
+  // Setting the PWMxOE bit of the PWMxCON register.
   PWM2CONbits.PWM2OE = 1;
+  // Enable the PWMx pin output driver(s) by clearing the associated TRIS bit(s)
+  TRISCbits.TRISC5 = 0;
+  // Enables the Timer2 to PR2 match interrupt
   PIE1bits.TMR2IE = 1;
 }
 
 void Pwm_Stop()
 {
+  // Disables the Timer2 to PR2 match interrupt
   PIE1bits.TMR2IE = 0;
-  PWM2CONbits.PWM2OE = 0;
+  // Disable the PWMx pin output driver(s) by setting the associated TRIS bit(s)
   TRISCbits.TRISC5 = 1;
+  // Clearing the PWMxOE bit of the PWMxCON register.
+  PWM2CONbits.PWM2OE = 0;
+}
+
+inline void Pwm_SetDuty(uint16_t duty)
+{
+  PWM2DCH = (duty >> 2) & 0xFF;
+  PWM2DCLbits.PWM2DCL = duty & 0x03;
 }

@@ -8,18 +8,20 @@
 #include "clock.h"
 #include "port.h"
 #include "wdt.h"
-#include "pwm.h"
-
-// prototypes
-void setup(void);
-void loop(void);
+#include "tone.h"
 
 void main(void)
 {
-  setup();
+  Clock_Initialize();
+  Port_Initialize();
+  Wdt_Initialize();
+  Tone_Initialize();
+  Wdt_Start();
+  Tone_Start();
+  Tone_SetNotes((1 << TONE_NOTE_C) | (1 << TONE_NOTE_E) | (1 << TONE_NOTE_G));
   while (true)
   {
-    loop();
+    __delay_ms(100);
     Wdt_Reset();
   }
 }
@@ -29,26 +31,8 @@ void __interrupt() isr(void)
   static uint16_t pwmDuty = 0;
   if (PIR1bits.TMR2IF)
   {
-    Pwm_SetDuty(pwmDuty);
-    if (++pwmDuty > 1023)
-    {
-      pwmDuty = 0;
-    }
-
+    LATCbits.LATC0 = ~LATCbits.LATC0;
+    Tone_Update();
     PIR1bits.TMR2IF = 0;
   }
-}
-
-void setup()
-{
-  Clock_Initialize();
-  Port_Initialize();
-  Wdt_Initialize();
-  Pwm_Initialize();
-  Wdt_Start();
-  Pwm_Start();
-}
-
-void loop()
-{
 }

@@ -14,13 +14,13 @@ void Port_Initialize(void);
 #define LED7(level) (LATCbits.LATC6 = (level))
 #define LED8(level) (LATCbits.LATC7 = (level))
 
-#define KEY_C() (PORTAbits.RA0)
-#define KEY_D() (PORTAbits.RA1)
-#define KEY_E() (PORTAbits.RA3)
-#define KEY_F() (PORTAbits.RA4)
-#define KEY_G() (PORTBbits.RB4)
-#define KEY_A() (PORTBbits.RB5)
-#define KEY_B() (PORTBbits.RB6)
-#define KEY_C_H() (PORTBbits.RB7)
+#define GetKeyC() (PORTAbits.RA0)
+#define GetKeyD() (PORTAbits.RA1)
+#define GetKeyE() (PORTAbits.RA3)
+#define GetKeyF() (PORTAbits.RA4)
+#define GetKeyG() (PORTBbits.RB4)
+#define GetKeyA() (PORTBbits.RB5)
+#define GetKeyB() (PORTBbits.RB6)
+#define GetKeyCHigh() (PORTBbits.RB7)
 
 #endif // PORT_H

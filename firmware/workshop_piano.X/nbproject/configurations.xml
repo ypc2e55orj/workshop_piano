@@ -9,6 +9,7 @@
       <itemPath>../src/port.h</itemPath>
       <itemPath>../src/wdt.h</itemPath>
       <itemPath>../src/pwm.h</itemPath>
+      <itemPath>../src/tone.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>../src/port.c</itemPath>
       <itemPath>../src/wdt.c</itemPath>
       <itemPath>../src/pwm.c</itemPath>
+      <itemPath>../src/tone.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
