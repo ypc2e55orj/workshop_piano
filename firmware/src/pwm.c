@@ -7,7 +7,6 @@
 // libc
 #include <stdint.h>
 
-// コメントはデータシートより引用
 void Pwm_Initialize()
 {
   // Disables all interrupts
