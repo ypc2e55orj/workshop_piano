@@ -11,7 +11,6 @@
 
 struct Tone
 {
-  uint8_t notes;
   uint8_t skipNum[TONE_NUM_SAME_TIME];
   uint16_t sineIndex[TONE_NUM_SAME_TIME];
 };
@@ -44,7 +43,6 @@ void Tone_SetNotes(uint8_t notes)
     tone.skipNum[noteNum] = 0;
     tone.sineIndex[noteNum] = sineSamples[0];
   }
-  tone.notes = notes;
 }
 
 void Tone_Start()
