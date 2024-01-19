@@ -7,18 +7,15 @@
 // project
 #include "pwm.h"
 
-// defines
 #define TONE_NUM_SINE_SAMPLES 0x3FF
-#define TONE_NUM_SAME_TIME 4
 
-// types
 struct Tone
 {
+  uint8_t notes;
   uint8_t skipNum[TONE_NUM_SAME_TIME];
   uint16_t sineIndex[TONE_NUM_SAME_TIME];
 };
 
-// variables
 static const uint16_t sineSamples[TONE_NUM_SINE_SAMPLES + 1] = {
 #include "sine.inc"
 };
@@ -32,9 +29,22 @@ void Tone_Initialize()
 
 void Tone_SetNotes(uint8_t notes)
 {
-  for (uint8_t n = 0; n < TONE_NUM_NOTES; n++)
+  uint8_t noteNum = 0;
+
+  for (uint8_t n = 0; n < TONE_NUM_NOTES && noteNum < TONE_NUM_SAME_TIME; n++)
   {
+    if ((notes >> n) & 0x01)
+    {
+      tone.skipNum[noteNum] = sineSkipCount[n];
+      noteNum++;
+    }
   }
+  for (; noteNum < TONE_NUM_SAME_TIME; noteNum++)
+  {
+    tone.skipNum[noteNum] = 0;
+    tone.sineIndex[noteNum] = sineSamples[0];
+  }
+  tone.notes = notes;
 }
 
 void Tone_Start()
@@ -47,7 +57,7 @@ void Tone_Stop()
   Pwm_Stop();
 }
 
-void Tone_Update()
+inline void Tone_Update()
 {
   uint16_t pwmDuty = 0;
 

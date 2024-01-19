@@ -8,8 +8,10 @@
 | :--------: | :------------------: |
 |  firmware  | MPLAB X プロジェクト |
 | schematic  |  KiCad プロジェクト  |
+|    docs    |         資料         |
 
-## バージョン
+## 必要バージョン
 
-MPLAB X IDE `v6.15`, xc8 `v2.45`
-KiCad `7.0`
+- MPLAB X IDE `v6.15`, xc8 `v2.45`
+- KiCad `7.0`
+- Microsoft Office 365 Excel

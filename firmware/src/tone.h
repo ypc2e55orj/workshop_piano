@@ -4,6 +4,8 @@
 // libc
 #include <stdint.h>
 
+#define TONE_NUM_SAME_TIME 4
+
 enum
 {
   TONE_NOTE_C,
@@ -17,10 +19,11 @@ enum
   TONE_NUM_NOTES
 };
 
+// prototypes
 void Tone_Initialize(void);
 void Tone_SetNotes(uint8_t notes);
 void Tone_Start(void);
 void Tone_Stop(void);
-void Tone_Update(void);
+inline void Tone_Update(void);
 
 #endif // TONE_H
